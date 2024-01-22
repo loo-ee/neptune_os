@@ -5,11 +5,10 @@ mod vga_buffer;
 
 use core::panic::PanicInfo;
 
-static HELLO: &[u8] = b"Hello World!";
-
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    vga_buffer::write_something();
+    println!("Welcome to Neptune_OS");
+    println!("I am Louie");
 
     loop {
         
@@ -17,7 +16,9 @@ pub extern "C" fn _start() -> ! {
 }
 
 #[panic_handler]
-fn panic(_info: &PanicInfo) -> ! {
+fn panic(info: &PanicInfo) -> ! {
+    println!("{}", info);
+
     loop {
         
     }
